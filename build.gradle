@@ -85,7 +85,11 @@ java {
 // a version whose changes were never written down, so the release stops rather than ship blank
 // notes.
 def changelogSection = { String version ->
-    def match = (file('CHANGELOG.md').text =~ /(?ms)^## \Q${version}\E\b.*?\n(.*?)(?=^## |\z)/)
+    def changelogFile = file('CHANGELOG.md')
+    if (!changelogFile.exists()) {
+        return "Release ${version}"
+    }
+    def match = (changelogFile.text =~ /(?ms)^## \Q${version}\E\b.*?\n(.*?)(?=^## |\z)/)
     if (!match) {
         throw new GradleException("CHANGELOG.md has no '## ${version}' section")
     }

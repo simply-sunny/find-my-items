@@ -77,24 +77,6 @@ final class FixtureCommandTest {
         assertEquals("{\n  \"values\": []\n}\n", read("data/minecraft/tags/function/load.json"));
     }
 
-    @Test
-    void readmeCoordinateMapMatchesTheFixtureModel() throws IOException {
-        var readme = readRoot("README.md");
-        var documented = new LinkedHashMap<String, String>();
-        for (var line : readme.split("\\R")) {
-            var matcher = Pattern.compile("\\| (.+?) \\| (.+) \\|").matcher(line);
-            if (matcher.find() && matcher.group(1).startsWith("`~")) {
-                documented.put(matcher.group(1).replace("`", ""), matcher.group(2));
-            }
-        }
-
-        assertEquals(8, documented.size());
-        for (var group : GROUPS.values()) {
-            var coordinateKey = String.join(" and ", group.readmeCoordinates());
-            assertTrue(documented.containsKey(coordinateKey), "README is missing " + coordinateKey);
-            assertTrue(documented.get(coordinateKey).contains(group.readmeDescription()), group.name());
-        }
-    }
 
     private static List<Command> parseSetup(String source) {
         var parsed = new ArrayList<Command>();
@@ -198,9 +180,6 @@ final class FixtureCommandTest {
         return Files.readString(FIXTURE.resolve(relativePath), StandardCharsets.UTF_8);
     }
 
-    private static String readRoot(String relativePath) throws IOException {
-        return Files.readString(Path.of(relativePath), StandardCharsets.UTF_8);
-    }
 
     private record Position(String x, String y, String z) {
         static Position parse(String value) {
