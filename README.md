@@ -10,6 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/simply-sunny/find-my-items/releases"><img src="https://img.shields.io/badge/release-v0.1.5-black?style=flat-square&logo=github" alt="Release"></a>
+  <a href="https://modrinth.com/mod/findmyitems"><img src="https://img.shields.io/badge/modrinth-210_downloads-black?style=flat-square&logo=modrinth" alt="Modrinth"></a>
   <a href="https://fabricmc.net/"><img src="https://img.shields.io/badge/loader-Fabric-black?style=flat-square" alt="Fabric"></a>
   <a href="https://adoptium.net/"><img src="https://img.shields.io/badge/java-25-black?style=flat-square" alt="Java 25"></a>
   <a href="https://github.com/TerraformersMC/ModMenu"><img src="https://img.shields.io/badge/mod_menu-supported-black?style=flat-square" alt="Mod Menu"></a>
